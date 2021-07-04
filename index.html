@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Svitlana Lozovenko">
-    <meta name="description" content="GoIT-training. Homework 4. Page 1 of 2">
+    <meta name="description" content="GoIT-training. Homework 5. Page 1 of 2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -55,7 +55,18 @@
         <section class="hero">
             <div class="hero-wrap container">
                 <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-                <button class="modal-btn" type="button">Заказать услугу</button>
+                <button class="modal-btn" type="button" data-modal-open>Заказать услугу</button>
+                <div class="backdrop is-hidden" data-modal>
+                    <div class="modal">
+                        <p class="modal-window-title">Оставьте свои данные, мы вам перезвоним</p>
+                        <button class="modal-send-btn" type="button">Отправить</button>
+                        <button class="modal-close-btn" type="button" data-modal-close>
+                            <svg class="close-icon">
+                                <use href="./img/icons.svg#icon-close"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -401,6 +412,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="./js/modal.js"></script>
 </body>
 
 </html>
