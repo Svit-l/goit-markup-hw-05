@@ -192,7 +192,7 @@ button:focus {
   margin: 0 auto 30px;
 }
 
-/* ---------Модальная кнопка--------- */
+/* ---------Модальная кнопка открытия окна--------- */
 
 .modal-btn {
   font-family: inherit;
@@ -216,7 +216,7 @@ button:focus {
 }
 
 /* -------------Модальное окно------------- */
-.modal {
+/* .modal .backdrop {
   position: fixed;
   width: 528px;
   height: 580px;
@@ -229,9 +229,9 @@ button:focus {
   opacity: 1;
   visibility: visible;
   position: relative;
-}
+} */
 
-.modal-window-title {
+/* .modal-window-title {
   font-weight: 700;
   font-size: 20px;
   line-height: 1.15;
@@ -242,7 +242,7 @@ button:focus {
   position: absolute;
   top: 40px;
   left: 41px;
-}
+} */
 
 /* .is-hidden {
   position: fixed;
@@ -253,6 +253,15 @@ button:focus {
   visibility: visible;
   opacity: 0.5;
   pointer-events:;  
+} */
+
+/* .overlay {
+position: absolute;
+width: 1600px;
+height: 1024px;
+left: 0px;
+top: 0px;
+background: rgba(0, 0, 0, 0.2);
 } */
 
 /* .backdrop {
@@ -267,10 +276,7 @@ button:focus {
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility: hidden;
 } */
 
-.modal-close-btn {
-  /* ;
-  left: 1026px;
-  top: 229px; */
+/* .modal-close-btn {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -289,7 +295,7 @@ button:focus {
 .close-icon {
   width: 11px;
   height: 11px;
-}
+} */
 
 /*=====================Features============*/
 .features-list {
@@ -340,11 +346,6 @@ button:focus {
   padding-top: 0;
 }
 
-.activity-list {
-  display: flex;
-  justify-content: space-between;
-}
-
 .activity-title {
   font-weight: 700;
   font-size: 36px;
@@ -352,6 +353,38 @@ button:focus {
   text-align: center;
   letter-spacing: 0.03em;
   margin-bottom: 50px;
+}
+
+.activity-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.activity-item {
+  width: 370px;
+  height: 294px;
+  position: relative;
+}
+
+.activity-item > .activity-pic-lable {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 27px 0;
+
+  background-color: rgba(47, 48, 58, 0.8);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--another-main-color);
+}
+
+.activity-pic {
+  max-width: 100%;
+  height: auto;
 }
 
 /*==============Team===================*/
@@ -460,10 +493,6 @@ button:focus {
 .client-item {
   width: 170px;
   height: 92px;
-  border: 1px solid #afb1b8;
-  border-radius: 4px;
-  background-color: transparent;
-  fill: #afb1b8;
 }
 
 .client-link {
@@ -472,6 +501,10 @@ button:focus {
   align-items: center;
   width: 100%;
   height: 100%;
+  border: 1px solid #afb1b8;
+  border-radius: 4px;
+  background-color: transparent;
+  fill: #afb1b8;
 }
 
 .client-link:focus,
@@ -530,11 +563,7 @@ button:focus {
 }
 
 .address-location:hover,
-.address-location:focus {
-  color: var(--accent-color);
-  outline: none;
-}
-
+.address-location:focus,
 .info-link:hover,
 .info-link:focus {
   color: var(--accent-color);
@@ -633,7 +662,9 @@ button:focus {
     0px 2px 2px rgba(0, 0, 0, 0.12);
   outline: none;
 }
+
 /*-------------Work examples-------------*/
+
 .work-list {
   display: flex;
   flex-wrap: wrap;
@@ -647,6 +678,46 @@ button:focus {
   flex-basis: calc((100% - 90px) / 3);
 }
 
+.work-link {
+  display: block;
+  position: relative;
+  width: 370px;
+  height: 294px;
+  overflow: hidden;
+}
+
+.work-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.work-card-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-overlay-text {
+  display: block;
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--another-main-color);
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+.work-item:hover .work-card-overlay {
+  transform: translateY(0);
+}
+
 .work-item:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -656,6 +727,7 @@ button:focus {
 .work-item-text {
   padding: 20px 24px;
   border: 1px solid #eeeeee;
+}
 }
 
 .work-name {
