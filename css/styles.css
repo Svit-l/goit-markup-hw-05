@@ -5,6 +5,10 @@
   --another-main-color: #ffffff;
   --main-font: "Roboto", sans-serif;
   --secondary-font: "Raleway", sans-serif;
+  --transition-color: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --transition-fill: fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --transition-background-color: background-color 250ms
+    cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 h1,
@@ -33,14 +37,6 @@ body {
   font-family: var(--main-font);
   background: var(--another-main-color);
   color: var(--main-color);
-}
-
-a:hover,
-a:focus,
-button:hover,
-button:focus {
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .list {
@@ -123,7 +119,9 @@ button:focus {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-color);
-  /* position: relative; */
+  display: block;
+  position: relative;
+  transition: var(--transition-color);
 }
 
 .menu-link:hover,
@@ -134,13 +132,14 @@ button:focus {
 
 .menu-link.current::after {
   content: "";
+  display: block;
   width: 100%;
   height: 4px;
+  left: 0;
+  bottom: -33px;
   border-radius: 2px;
   background-color: var(--accent-color);
-  display: block;
-  /* position: absolute; 
-  bottom: 0;*/
+  position: absolute;
 }
 
 .menu-item:not(:last-child) {
@@ -161,6 +160,7 @@ button:focus {
   letter-spacing: 0.02em;
   color: var(--small-text-color);
   fill: var(--small-text-color);
+  transition: var(--transition-color), var(--transition-fill);
 }
 
 .header-icon {
@@ -219,31 +219,47 @@ button:focus {
   border: none;
   border-radius: 4px;
   padding: 10px 32px;
+  transition: var(--transition-background-color);
 }
 
 .modal-btn:hover,
 .modal-btn:focus {
-  background: #188ce8;
+  background-color: #188ce8;
   outline: none;
 }
 
 /* -------------Модальное окно------------- */
-/* .modal .backdrop {
+
+.backdrop {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* visibility: visible;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    pointer-events 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+
+  display: flex;
+}
+
+.modal-window {
   width: 528px;
   height: 580px;
-  left: 536px;
-  top: 221px;
   background: var(--another-main-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  opacity: 1;
-  visibility: visible;
-  position: relative;
-} */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-/* .modal-window-title {
+.modal-window-title {
   font-weight: 700;
   font-size: 20px;
   line-height: 1.15;
@@ -254,41 +270,14 @@ button:focus {
   position: absolute;
   top: 40px;
   left: 41px;
-} */
+}
 
-/* .is-hidden {
-  position: fixed;
-  left: 536px;
-  top: 221px;
-  width: 100%;
-  height: 100%;
-  visibility: visible;
-  opacity: 0.5;
-  pointer-events:;  
-} */
+.is-hidden {
+  visibility: hidden;
+  pointer-events: auto;
+}
 
-/* .overlay {
-position: absolute;
-width: 1600px;
-height: 1024px;
-left: 0px;
-top: 0px;
-background: rgba(0, 0, 0, 0.2);
-} */
-
-/* .backdrop {
-  display: flex;
-  position: fixed;
-  left: 536px;
-  top: 221px;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  visibility: visible;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility: hidden;
-} */
-
-/* .modal-close-btn {
+.modal-close-btn {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -307,9 +296,11 @@ background: rgba(0, 0, 0, 0.2);
 .close-icon {
   width: 11px;
   height: 11px;
-} */
+  visibility: visible;
+  pointer-events: auto;
+}
 
-/*=====================Features============*/
+/*=====================Features===================*/
 .features-list {
   display: flex;
   justify-content: space-between;
@@ -472,6 +463,7 @@ background: rgba(0, 0, 0, 0.2);
   justify-content: center;
   align-items: center;
   fill: #afb1b8;
+  transition: var(--transition-background-color), var(--transition-fill);
 }
 
 .social-link:hover,
@@ -517,6 +509,8 @@ background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   background-color: transparent;
   fill: #afb1b8;
+  transition: var(--transition-fill),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .client-link:focus,
@@ -565,6 +559,7 @@ background: rgba(0, 0, 0, 0.2);
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--another-main-color);
+  transition: var(--transition-color);
 }
 
 .info-link {
@@ -572,6 +567,7 @@ background: rgba(0, 0, 0, 0.2);
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
+  transition: var(--transition-color);
 }
 
 .address-location:hover,
@@ -624,6 +620,7 @@ background: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   fill: var(--another-main-color);
+  transition: var(--transition-background-color);
 }
 
 .footer-social-link:hover,
@@ -652,16 +649,18 @@ background: rgba(0, 0, 0, 0.2);
   line-height: 1.62;
   text-align: center;
   letter-spacing: 0.03em;
-  background: #f5f4fa;
+  background-color: #f5f4fa;
   border-radius: 4px;
   cursor: pointer;
   border: none;
   padding: 8px 24px;
+  transition: var(--transition-color), var(--transition-background-color),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .portfolio-btn.current {
   color: var(--another-main-color);
-  background: var(--accent-color);
+  background-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
@@ -669,7 +668,7 @@ background: rgba(0, 0, 0, 0.2);
 .portfolio-btn:hover,
 .portfolio-btn:focus {
   color: var(--another-main-color);
-  background: var(--accent-color);
+  background-color: var(--accent-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
   outline: none;
@@ -688,6 +687,7 @@ background: rgba(0, 0, 0, 0.2);
   margin-left: 30px;
   margin-top: 30px;
   flex-basis: calc((100% - 90px) / 3);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .work-link {
